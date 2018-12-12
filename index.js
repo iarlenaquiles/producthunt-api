@@ -5,17 +5,8 @@ const app = express();
 
 mongoose.connect('mongodb://localhost:27017/producthunt', { useNewUrlParser: true });
 
-requireDir('./models');
+requireDir('./src/models');
 
-const Product = mongoose.model('Product');
-
-app.get('/', (req, res) => {
-    Product.create({
-        title: 'React Native',
-        description: 'teste',
-        url: 'www.react.com'
-    });
-    res.send('Hello api');
-});
+app.use('/api', require('./src/routes'));
 
 app.listen(2900);
