@@ -7,7 +7,14 @@ mongoose.connect('mongodb://localhost:27017/producthunt', { useNewUrlParser: tru
 
 requireDir('./models');
 
+const Product = mongoose.model('Product');
+
 app.get('/', (req, res) => {
+    Product.create({
+        title: 'React Native',
+        description: 'teste',
+        url: 'www.react.com'
+    });
     res.send('Hello api');
 });
 
